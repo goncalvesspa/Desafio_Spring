@@ -24,25 +24,25 @@ public class EventoRequest{
     
 
     
-    private Integer IdCategoriaEvento;
+    private Integer idCategoriaEvento;
 
     @NotEmpty(message = "name is required")
-    private String Nome;
+    private String nome;
 
     @NotNull
-    private Date DataHoraInicio;
+    private Date dataHoraInicio;
 
     @NotNull
-    private Date DataHoraFim;
+    private Date dataHoraFim;
 
     @NotEmpty(message = "local is required")
     private String local;
 
     @NotEmpty(message = "Descricao is required")
-    private String Descricao;
+    private String descricao;
 
     
-    private Integer LimiteVagas;
+    private Integer limiteVagas;
 
 
 

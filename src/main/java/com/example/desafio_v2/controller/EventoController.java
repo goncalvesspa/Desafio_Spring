@@ -96,4 +96,12 @@ public class EventoController {
 		return false;
 	} */
 
+	@PutMapping(value = "/{id}")
+	public ResponseEntity<EventoResponse> update2(@PathVariable Integer id) { //Meu put terá dois campos para o usuario digitar o id do evento e o id do status do evento, preciso mandar isso para meu service
+		
+		
+		return ResponseEntity.ok(mapper.toDto(eventoService.cancelar(id)));
+		
+	}
+
 }
