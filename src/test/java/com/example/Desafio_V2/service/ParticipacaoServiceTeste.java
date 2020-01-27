@@ -1,5 +1,12 @@
 package com.example.Desafio_V2.service;
 
+import com.example.desafio_v2.domain.entities.Participacao;
+import com.example.desafio_v2.exception.DataNotFoundException;
+import com.example.desafio_v2.repository.ParticipacaoRepository;
+import com.example.desafio_v2.service.ParticipacaoService;
+
+
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.ArgumentMatchers.anyInt;
@@ -8,18 +15,8 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-
-import com.example.desafio_v2.domain.entities.CategoriaEvento;
-import com.example.desafio_v2.domain.entities.Evento;
-import com.example.desafio_v2.domain.entities.Participacao;
-import com.example.desafio_v2.exception.DataNotFoundException;
-import com.example.desafio_v2.repository.EventoRepository;
-import com.example.desafio_v2.repository.ParticipacaoRepository;
-import com.example.desafio_v2.service.EventoService;
-import com.example.desafio_v2.service.ParticipacaoService;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -50,13 +47,9 @@ public class ParticipacaoServiceTeste {
     private final String LoginParticipante = "Some string";
     private final String Comentario = "Rua Iteris";
     
+    Participacao entity = Participacao.builder().IdParticipacao(IdParticipacao).Nota(Nota).LoginParticipante(LoginParticipante).Comentario(Comentario).build();
 
-
-
-    Participacao participacao = Participacao.builder().IdParticipacao(IdParticipacao).Nota(Nota).build(); 
-
-    Evento entity = Evento.builder().idEvento(idEvento).nome(nome).limiteVagas(limiteVagas).dataHoraInicio(dataHoraInicio).dataHoraFim(dataHoraFim).local(local).descricao(descricao).build();
-
+    
     @Test
     public void should_ThrowDataNotFoundException_whenNotFound() {
 
@@ -77,7 +70,7 @@ public class ParticipacaoServiceTeste {
         when(repositoryMock.findById(anyInt())).thenReturn(Optional.of(entity));
 
         // when
-        Evento model = service.findById(anyInt());
+        Participacao model = service.findById(anyInt());
 
         // then
         verify(repositoryMock, times(1)).findById(anyInt());
@@ -86,11 +79,11 @@ public class ParticipacaoServiceTeste {
 
     @Test
     public void should_ListOneItem() {
-        List<Evento> list = new ArrayList<>();
+        List<Participacao> list = new ArrayList<>();
         list.add(entity);
         when(repositoryMock.findAll()).thenReturn(list);
 
-        List<Evento> listR = service.listEvento();
+        List<Participacao> listR = service.listParticipacao();
 
         verify(repositoryMock, times(1)).findAll();
         assertNotNull("Array não deve ser nulo", listR);

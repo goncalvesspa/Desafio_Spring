@@ -14,10 +14,12 @@ import java.util.Optional;
 
 import com.example.desafio_v2.domain.entities.CategoriaEvento;
 import com.example.desafio_v2.domain.entities.Evento;
+import com.example.desafio_v2.domain.entities.StatusEvento;
 import com.example.desafio_v2.exception.DataNotFoundException;
 import com.example.desafio_v2.repository.EventoRepository;
 import com.example.desafio_v2.repository.StatusEventoRepository;
 import com.example.desafio_v2.service.EventoService;
+import com.example.desafio_v2.service.StatusEventoService;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -40,24 +42,17 @@ public class StatusEventoServiceTeste {
     private StatusEventoRepository repositoryMock;
 
     @InjectMocks
-    private EventoService service;
-
-    private final Integer idEvento = 1;
-    private final Integer IdCategoriaEvento = 1; //Valor mocado
-    private final String nome = "Some string";
-    private final Integer limiteVagas = 1;
-    private final Date dataHoraInicio = new Date();
-    private final Date dataHoraFim = new Date();
-    private final String local = "Rua Iteris";
-    private final String descricao = "Evento Front";
+    private StatusEventoService service;
 
 
+    private final Integer IdEventoStatus = 1;
+    private final String NomeStatus = "Some string";
+    
 
-    CategoriaEvento categoriaEvento = CategoriaEvento.builder()//
-            .IdCategoriaEvento(IdCategoriaEvento).NomeCategoria("NomeCategoria").build(); //Mocado e puxado do banco na mão
 
-    Evento entity = Evento.builder().idEvento(idEvento).nome(nome).limiteVagas(limiteVagas).dataHoraInicio(dataHoraInicio).dataHoraFim(dataHoraFim).local(local).descricao(descricao).build();
+    StatusEvento entity = StatusEvento.builder().IdEventoStatus(IdEventoStatus).NomeStatus(NomeStatus).build(); //Mocado e puxado do banco na mão
 
+    
     @Test
     public void should_ThrowDataNotFoundException_whenNotFound() {
 
@@ -68,7 +63,7 @@ public class StatusEventoServiceTeste {
         expected.expectMessage("Evento Not found");
 
         // when
-        service.findById(4);
+        service.findById(1);
     }
 
     @Test
@@ -78,7 +73,7 @@ public class StatusEventoServiceTeste {
         when(repositoryMock.findById(anyInt())).thenReturn(Optional.of(entity));
 
         // when
-        Evento model = service.findById(anyInt());
+        StatusEvento model = service.findById(anyInt());
 
         // then
         verify(repositoryMock, times(1)).findById(anyInt());
