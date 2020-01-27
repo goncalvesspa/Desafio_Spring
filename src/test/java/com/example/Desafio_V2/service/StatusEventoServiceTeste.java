@@ -8,17 +8,13 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
-import com.example.desafio_v2.domain.entities.CategoriaEvento;
-import com.example.desafio_v2.domain.entities.Evento;
+
 import com.example.desafio_v2.domain.entities.StatusEvento;
 import com.example.desafio_v2.exception.DataNotFoundException;
-import com.example.desafio_v2.repository.EventoRepository;
 import com.example.desafio_v2.repository.StatusEventoRepository;
-import com.example.desafio_v2.service.EventoService;
 import com.example.desafio_v2.service.StatusEventoService;
 
 import org.junit.Rule;
@@ -82,11 +78,11 @@ public class StatusEventoServiceTeste {
 
     @Test
     public void should_ListOneItem() {
-        List<Evento> list = new ArrayList<>();
+        List<StatusEvento> list = new ArrayList<>();
         list.add(entity);
         when(repositoryMock.findAll()).thenReturn(list);
 
-        List<Evento> listR = service.listEvento();
+        List<StatusEvento> listR = service.listStatusEvento();
 
         verify(repositoryMock, times(1)).findAll();
         assertNotNull("Array não deve ser nulo", listR);
