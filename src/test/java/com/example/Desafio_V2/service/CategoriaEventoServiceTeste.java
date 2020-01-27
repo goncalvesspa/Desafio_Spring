@@ -8,15 +8,16 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
-import java.util.Date;
+
 import java.util.List;
 import java.util.Optional;
 
 import com.example.desafio_v2.domain.entities.CategoriaEvento;
-import com.example.desafio_v2.domain.entities.Evento;
+
 import com.example.desafio_v2.exception.DataNotFoundException;
-import com.example.desafio_v2.repository.EventoRepository;
-import com.example.desafio_v2.service.EventoService;
+import com.example.desafio_v2.repository.CategoriaEventoRepository;
+import com.example.desafio_v2.service.CategoriaEventoService;
+
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -29,33 +30,37 @@ import org.mockito.junit.MockitoJUnitRunner;
 /**
  * ClientServiceTest
  */
+
 @RunWith(MockitoJUnitRunner.class)
-public class EventoServiceTeste {
+public class CategoriaEventoServiceTeste {
 
     @Rule
     public ExpectedException expected = ExpectedException.none();
 
     @Mock
-    private EventoRepository repositoryMock;
+    private CategoriaEventoRepository repositoryMock;
 
     @InjectMocks
-    private EventoService service;
+    private CategoriaEventoService service;
 
-    private final Integer idEvento = 1;
+
+    
+
     private final Integer IdCategoriaEvento = 1; //Valor mocado
-    private final String nome = "Some string";
+    private String NomeCategoria = "Front";
+    
+    /* private final String nome = "Some string";
     private final Integer limiteVagas = 1;
     private final Date dataHoraInicio = new Date();
     private final Date dataHoraFim = new Date();
     private final String local = "Rua Iteris";
     private final String descricao = "Evento Front";
+ */
 
 
+    CategoriaEvento categoriaEvento = CategoriaEvento.builder().IdCategoriaEvento(IdCategoriaEvento).NomeCategoria(NomeCategoria).build(); 
 
-    CategoriaEvento categoriaEvento = CategoriaEvento.builder()//
-            .IdCategoriaEvento(IdCategoriaEvento).NomeCategoria("NomeCategoria").build(); //Mocado e puxado do banco na mão
-
-    Evento entity = Evento.builder().idEvento(idEvento).nome(nome).limiteVagas(limiteVagas).dataHoraInicio(dataHoraInicio).dataHoraFim(dataHoraFim).local(local).descricao(descricao).build();
+    
 
     @Test
     public void should_ThrowDataNotFoundException_whenNotFound() {
@@ -74,10 +79,10 @@ public class EventoServiceTeste {
     public void should_findById() {
 
         // given
-        when(repositoryMock.findById(anyInt())).thenReturn(Optional.of(entity));
+        when(repositoryMock.findById(anyInt())).thenReturn(Optional.of(categoriaEvento));
 
         // when
-        Evento model = service.findById(anyInt());
+        CategoriaEvento model = service.findById(anyInt());
 
         // then
         verify(repositoryMock, times(1)).findById(anyInt());
@@ -86,11 +91,11 @@ public class EventoServiceTeste {
 
     @Test
     public void should_ListOneItem() {
-        List<Evento> list = new ArrayList<>();
-        list.add(entity);
+        List<CategoriaEvento> list = new ArrayList<>();
+        list.add(categoriaEvento);
         when(repositoryMock.findAll()).thenReturn(list);
 
-        List<Evento> listR = service.listEvento();
+        List<CategoriaEvento> listR = service.listCategoriaEvento();
 
         verify(repositoryMock, times(1)).findAll();
         assertNotNull("Array não deve ser nulo", listR);

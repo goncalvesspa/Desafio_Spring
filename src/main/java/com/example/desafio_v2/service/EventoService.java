@@ -114,7 +114,7 @@ public List<Evento> listEventoUsuario() {
 
 
 public boolean validaData(Calendar ini, Calendar dia){
-    if((ini.get(Calendar.DAY_OF_YEAR) == dia.get(Calendar.DAY_OF_YEAR)) && (ini.get(Calendar.YEAR) == dia.get(Calendar.YEAR))){
+    if((ini.get(Calendar.DAY_OF_YEAR) == dia.get(Calendar.DAY_OF_YEAR)) && (ini.get(Calendar.YEAR) == dia.get(Calendar.YEAR)) && (ini.get(Calendar.MONTH) == dia.get(Calendar.MONTH))){
         return true;
     }
     return false;

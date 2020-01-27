@@ -16,6 +16,7 @@ import com.example.desafio_v2.domain.entities.CategoriaEvento;
 import com.example.desafio_v2.domain.entities.Evento;
 import com.example.desafio_v2.exception.DataNotFoundException;
 import com.example.desafio_v2.repository.EventoRepository;
+import com.example.desafio_v2.repository.StatusEventoRepository;
 import com.example.desafio_v2.service.EventoService;
 
 import org.junit.Rule;
@@ -30,13 +31,13 @@ import org.mockito.junit.MockitoJUnitRunner;
  * ClientServiceTest
  */
 @RunWith(MockitoJUnitRunner.class)
-public class EventoServiceTeste {
+public class StatusEventoServiceTeste {
 
     @Rule
     public ExpectedException expected = ExpectedException.none();
 
     @Mock
-    private EventoRepository repositoryMock;
+    private StatusEventoRepository repositoryMock;
 
     @InjectMocks
     private EventoService service;

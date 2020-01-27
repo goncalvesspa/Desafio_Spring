@@ -14,9 +14,12 @@ import java.util.Optional;
 
 import com.example.desafio_v2.domain.entities.CategoriaEvento;
 import com.example.desafio_v2.domain.entities.Evento;
+import com.example.desafio_v2.domain.entities.Participacao;
 import com.example.desafio_v2.exception.DataNotFoundException;
 import com.example.desafio_v2.repository.EventoRepository;
+import com.example.desafio_v2.repository.ParticipacaoRepository;
 import com.example.desafio_v2.service.EventoService;
+import com.example.desafio_v2.service.ParticipacaoService;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -30,30 +33,27 @@ import org.mockito.junit.MockitoJUnitRunner;
  * ClientServiceTest
  */
 @RunWith(MockitoJUnitRunner.class)
-public class EventoServiceTeste {
+public class ParticipacaoServiceTeste {
 
     @Rule
     public ExpectedException expected = ExpectedException.none();
 
     @Mock
-    private EventoRepository repositoryMock;
+    private ParticipacaoRepository repositoryMock;
 
     @InjectMocks
-    private EventoService service;
+    private ParticipacaoService service;
 
-    private final Integer idEvento = 1;
-    private final Integer IdCategoriaEvento = 1; //Valor mocado
-    private final String nome = "Some string";
-    private final Integer limiteVagas = 1;
-    private final Date dataHoraInicio = new Date();
-    private final Date dataHoraFim = new Date();
-    private final String local = "Rua Iteris";
-    private final String descricao = "Evento Front";
+
+    private final Integer IdParticipacao = 1;
+    private final int Nota = 1;
+    private final String LoginParticipante = "Some string";
+    private final String Comentario = "Rua Iteris";
+    
 
 
 
-    CategoriaEvento categoriaEvento = CategoriaEvento.builder()//
-            .IdCategoriaEvento(IdCategoriaEvento).NomeCategoria("NomeCategoria").build(); //Mocado e puxado do banco na mão
+    Participacao participacao = Participacao.builder().IdParticipacao(IdParticipacao).Nota(Nota).build(); 
 
     Evento entity = Evento.builder().idEvento(idEvento).nome(nome).limiteVagas(limiteVagas).dataHoraInicio(dataHoraInicio).dataHoraFim(dataHoraFim).local(local).descricao(descricao).build();
 
