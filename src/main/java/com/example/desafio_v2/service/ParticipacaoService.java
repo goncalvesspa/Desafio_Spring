@@ -33,7 +33,7 @@ public List<Participacao> listParticipacao() {
 
 public Participacao findById(Integer id) {
     Optional<Participacao> participacao = participacaoRepository.findById(id);
-    return participacao.orElseThrow(() -> new DataNotFoundException("Client Not found"));
+    return participacao.orElseThrow(() -> new DataNotFoundException("Evento Not found"));
 }
 
 

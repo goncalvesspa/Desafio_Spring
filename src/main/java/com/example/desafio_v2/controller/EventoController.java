@@ -73,7 +73,7 @@ public class EventoController {
 	// @RequestMapping(value = "/user/{id}", method = RequestMethod.PUT)
 	// public
 
-	@DeleteMapping(value = "/{id}") //
+	/* @DeleteMapping(value = "/{id}") //
 	public ResponseEntity<List<EventoResponse>> delete(@PathVariable Integer id) {
 
 		eventoService.deleteEvento(id);
@@ -81,9 +81,9 @@ public class EventoController {
 		return ResponseEntity.ok(eventoService.listEvento().stream() //
 				.map(x -> mapper.toDto(x)) //
 				.collect(Collectors.toList()));
-	}
+	} */
 
-	@PutMapping(value = "/{id}")
+	@PutMapping(value = "{id}")
 	public ResponseEntity<EventoResponse> update(@PathVariable Integer id, @Valid @RequestBody EventoUpdate newEvento) {
 		Evento evento = mapper.fromDto(newEvento);
 		evento.setIdEventoStatus(statusEventoService.findById(newEvento.getIdEventoStatus()));
@@ -96,12 +96,38 @@ public class EventoController {
 		return false;
 	} */
 
-	@PutMapping(value = "/{id}")
-	public ResponseEntity<EventoResponse> update2(@PathVariable Integer id) { //Meu put terá dois campos para o usuario digitar o id do evento e o id do status do evento, preciso mandar isso para meu service
+	@DeleteMapping(value = "/cancelar/{id}")
+	public ResponseEntity<EventoResponse> cancelar(@PathVariable Integer id) { //Meu put terá dois campos para o usuario digitar o id do evento e o id do status do evento, preciso mandar isso para meu service
 		
 		
 		return ResponseEntity.ok(mapper.toDto(eventoService.cancelar(id)));
 		
 	}
 
+	@PutMapping(value = "/iniciar/{id}")
+    public ResponseEntity<EventoResponse> iniciar(@PathVariable Integer id){
+ 
+        return ResponseEntity.ok(mapper.toDto(eventoService.iniciar(id)));
+    }
+
 }
+
+
+
+/*  @PutMapping(value = "/cancelar/{id}")
+    public ResponseEntity<EventoResponse> update(@PathVariable Integer id){
+ 
+        return ResponseEntity.ok(mapper.toDto(eventoService.cancelar(id)));
+    }
+ 
+    @DeleteMapping(value = "/{id}")
+    public void deleteById(@PathVariable Integer id) {
+ 
+        eventoService.delete(id);
+    }
+ 
+    @PutMapping(value = "/iniciar/{id}")
+    public ResponseEntity<EventoResponse> iniciar(@PathVariable Integer id){
+ 
+        return ResponseEntity.ok(mapper.toDto(eventoService.iniciar(id)));
+    } */

@@ -33,7 +33,7 @@ public class StatusEventoService {
 
     public StatusEvento findById(Integer id) {
         Optional<StatusEvento> statusEvento = statusEventoRepository.findById(id);
-        return statusEvento.orElseThrow(() -> new DataNotFoundException("Client Not found"));
+        return statusEvento.orElseThrow(() -> new DataNotFoundException("Evento Not found"));
     }
     
 
