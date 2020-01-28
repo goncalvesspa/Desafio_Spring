@@ -1,4 +1,4 @@
-package com.example.Desafio_V2.domain.maper;
+package com.example.Desafio_V2.domain.mapper;
 
 import static org.junit.Assert.assertEquals;
 

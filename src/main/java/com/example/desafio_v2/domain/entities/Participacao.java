@@ -35,10 +35,10 @@ public class Participacao{
 
 
     @Column(nullable = false)
-    private boolean FlagPresente;
+    private Boolean FlagPresente;
 
     @Column
-    private int Nota;
+    private Integer Nota;
 
     @Column(length = 1000)
     private String Comentario;

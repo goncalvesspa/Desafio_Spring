@@ -35,12 +35,7 @@ public class DataValidator implements ConstraintValidator<DataEvento, EventoRequ
 
         return true;
        
-        // TODO Auto-generated method stub
-        /* if(value == null){
-            return false;
-        }
- */
-
+       
        
     }
 

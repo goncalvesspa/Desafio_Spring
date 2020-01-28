@@ -12,7 +12,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-
 public class ParticipacaoResponse{
 
     
@@ -27,7 +26,7 @@ public class ParticipacaoResponse{
 
 
     
-    private boolean FlagPresente;
+    private Boolean FlagPresente;
 
     
     private Integer Nota;

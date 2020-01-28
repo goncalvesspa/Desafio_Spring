@@ -2,7 +2,6 @@ package com.example.desafio_v2.domain.mapper;
 
 
 import com.example.desafio_v2.domain.dto.request.EventoRequest;
-import com.example.desafio_v2.domain.dto.request.EventoUpdate;
 import com.example.desafio_v2.domain.dto.response.EventoResponse;
 import com.example.desafio_v2.domain.entities.Evento;
 

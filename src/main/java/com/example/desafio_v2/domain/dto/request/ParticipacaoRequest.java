@@ -27,7 +27,7 @@ public class ParticipacaoRequest{
 
 
     //@NotEmpty(message = "FlagPresente is required")
-    private boolean FlagPresente;
+    private Boolean FlagPresente;
 
     //@NotEmpty(message = "Nota is required")
     private Integer Nota;
